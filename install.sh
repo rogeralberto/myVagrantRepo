@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-echo "Actualizando debian"
+echo "Updating"
 apt-get  update
-echo "Instalando apache2"
+echo "Installing apache2"
 apt-get install -y apache2
-echo "Instalando PHP"
+echo "Installing PHP5"
 apt-get install -y php5-common libapache2-mod-php5 php5-cli
-echo "Instalando mysql"
+echo "Installing mysql"
+echo "Create softlink for vagrant share folder and renaming to /var/www"
 if ! [ -L /var/www ]; then
   rm -rf /var/www
   ln -fs /vagrant /var/www
