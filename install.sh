@@ -13,6 +13,8 @@ echo "Installing mysql-server-5 with password: 123456"
 echo "mysql-server-5.5 mysql-server/root_password password 123456" | debconf-set-selections
 echo "mysql-server-5.5 mysql-server/root_password_again password 123456" | debconf-set-selections
 apt-get -y install mysql-server-5.5
+echo "Install mysql php5-mysqlnd"
+apt-get install php5-mysqlnd
 echo "Create softlink for vagrant share folder and renaming to /var/www"
 if ! [ -L /var/www ]; then
   rm -rf /var/www
@@ -31,3 +33,4 @@ else
 fi
 echo "Restarting Apache"
 service apache2 restart
+
